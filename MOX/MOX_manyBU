@@ -1,0 +1,226 @@
+
+% MOX
+% -----------------
+fuelstr
+
+
+% Water
+mat water -0.750 moder lwtr 1001
+ 8016.06c 1.0
+ 1001.06c 2.0
+
+therm lwtr lwe7.12t
+
+% Zirconium cladding (100%)
+% --------------
+mat clad -6.52
+40000.09c 1.0
+
+% Define fuel pin and surfaces
+% ----------------------------
+pin 1 
+MOX  0.41
+void 0.42
+clad 0.48
+water
+
+surf surf_1 sqc 0.0 0.0 0.63
+cell cell_1 0 fill 1 -surf_1
+cell cell_2 0 outside surf_1
+
+% Reflective boundary conditions
+% -------------------------------
+set bc 2
+
+% Plot from above
+% ----------------
+%plot 3 600 600 0 -2 2 -2 2
+
+set pop 5000 100 10
+set acelib "/home/elter/jeff31.xsdata"
+
+% Irradiation + Cooling
+%0-10MWd/kgU
+set powdens 27.39726027e-3
+dep bustep
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+set powdens 0
+dep daystep
+30
+%10-20MWd/kgU
+set powdens 27.39726027e-3
+dep bustep
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+set powdens 0
+dep daystep
+30
+%20-30MWd/kgU
+set powdens 27.39726027e-3
+dep bustep
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+set powdens 0
+dep daystep
+30
+%30-40MWd/kgU
+set powdens 27.39726027e-3
+dep bustep
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+set powdens 0
+dep daystep
+30
+%40-50MWd/kgU
+set powdens 27.39726027e-3
+dep bustep
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+set powdens 0
+dep daystep
+30
+%50-60MWd/kgU
+set powdens 27.39726027e-3
+dep bustep
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+set powdens 0
+dep daystep
+30
+%60-70MWd/kgU
+set powdens 27.39726027e-3
+dep bustep
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+
+
+set declib "/usr/local/SERPENT/endf-b-vi-8_decay.dat"
+set nfylib "/usr/local/SERPENT/endf-b-vi-8_nfpy.dat"
+set printm 1
